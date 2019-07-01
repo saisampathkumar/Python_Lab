@@ -16,10 +16,10 @@ from sklearn import linear_model
 lr = linear_model.LinearRegression()
 model = lr.fit(X_train, y_train)
 ##Evaluate the performance and visualize results
-print ("R^2 is: \n", model.score(X_test, y_test))
+print ("R^2 before EDA is: \n", model.score(X_test, y_test))
 predictions = model.predict(X_test)
 from sklearn.metrics import mean_squared_error
-print ('RMSE is: \n', mean_squared_error(y_test, predictions))
+print ('RMSE before EDA is: \n', mean_squared_error(y_test, predictions))
 
 #Working with Numeric Features
 numeric_features = train.select_dtypes(include=[np.number])
@@ -55,7 +55,7 @@ from sklearn import linear_model
 lr = linear_model.LinearRegression()
 model = lr.fit(X_train, y_train)
 ##Evaluate the performance and visualize results
-print ("R^2 is: \n", model.score(X_test, y_test))
+print ("R^2 after EDA is: \n", model.score(X_test, y_test))
 predictions = model.predict(X_test)
 from sklearn.metrics import mean_squared_error
-print ('RMSE is: \n', mean_squared_error(y_test, predictions))
+print ('RMSE after EDA is: \n', mean_squared_error(y_test, predictions))
