@@ -1,17 +1,24 @@
 str = input("please enter any string")
 res = ""
-storage = [][2]
-l = 0
+storage = []
+lstorage = []
+F_index = 0
+L_index = 0
+temp = 0
+
 for i in range(len(str)):
     if str[i] not in res:
         res += str[i]
     else:
-        storage[l][0] = res
-        storage[l][1] = len(res)
-        res = ""
-        res += str[i]
-        i -= 1
-        l += 1
+        storage.append(res)
+        lstorage.append(len(res))
+        res = str[i]
+        temp = F_index
+        F_index = i
+        i = temp
+
+storage.append(res)
+lstorage.append(len(res))
 
 for i in range(len(storage)):
-    print(storage[i])
+    print(storage[i],lstorage[i])

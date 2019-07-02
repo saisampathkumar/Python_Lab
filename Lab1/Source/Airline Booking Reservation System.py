@@ -1,7 +1,7 @@
 import random
 
 class colorise:
-
+    # Class to display text in different colors
     def colour(colour, text):
         if colour == "black":
             return "\033[1;30m" + str(text) + "\033[1;m"
@@ -23,6 +23,7 @@ class colorise:
 
 
 class Person:
+    # Defining person class to save the details of the person
     firstName = ""
     lastName = ""
     dOB = ""
@@ -31,6 +32,7 @@ class Person:
     email = ""
 
     def __init__(self, firstName, lastName, dOB, Address, cntct, email):
+        # Defining constructor
         self.firstName = firstName
         self.lastName = lastName
         self.dOB = dOB
@@ -40,12 +42,16 @@ class Person:
 
 
 class Passenger(Person):
+    # inheriting Person class features to save the details of the passenger
     iD = int(random.random() * 100000000)
+    # creating passenger ID
 
     def __init__(self, firstName, lastName, dOB, Address, cntct, email):
         Person.__init__(self, firstName, lastName, dOB, Address, cntct, email)
 
+
     def get_details(self):
+        # Defining function to print the details of the Passenger
         print(" |    ", colorise.colour("green", " Passenger Id          : "), self.iD, "  |")
         print(" |    ", colorise.colour("green", " First Name            : "), self.firstName, "   |   ")
         print(" |    ", colorise.colour("green", " Last Name             : "), self.lastName, "   |   ")
@@ -56,11 +62,14 @@ class Passenger(Person):
 
 
 class Check_Schedule(colorise):
+    # Defining function to perform operations on the available data
+
     data = [["May 22nd", "May 23rd", "12 hrs", "$ 137", 35, 100, 1979898],
             ["May 24th", "May 25th", "15 hrs", "$ 98", 90, 150, 1987789],
             ["May 23rd", "May 24th", "15.5 hrs", "$ 90", 87, 100, 1928939],
             ["May 22nd", "May 23rd", "13 hrs", "$ 129", 20, 80, 1282939],
             ["May 23rd", "May 24th", "17.7 hrs", "$ 80", 110, 200, 1282901]]
+    # Defining data of the flights in a list
 
     def __init__(self, loc1, loc2, pas, flight_id, firstName, lastName, dOB, Address, cntct, email):
         self.loc1 = loc1
@@ -75,6 +84,7 @@ class Check_Schedule(colorise):
         self.email = email
 
     def get_flight_details(self):
+        # defining function for getting flight details
         print(colorise.colour("blue", " Departure Location :"), self.loc1, "\n",
               colorise.colour("blue", "Destination        :"), self.loc2, "\n")
         for data in Check_Schedule.data:
@@ -85,8 +95,8 @@ class Check_Schedule(colorise):
             print(colorise.colour("yellow", "Cost              : "), data[3])
             print(colorise.colour("yellow", "Available Seats   : "), data[4], "\n")
 
-    @property
     def update_flight_details(self):
+        # Defining function to update the flight data
         for data in Check_Schedule.data:
             if data[6] == self.flight_id:
                 if data[4] == 0:
@@ -122,7 +132,7 @@ class Check_Schedule(colorise):
 
 
 class Issue_ticket():
-
+    # Defining another class to issue ticket to the passenger
     def __init__(self, loc1, loc2, pas, flight_id, firstName, lastName, dOB, Address, cntct, email):
         self.loc1 = loc1
         self.loc2 = loc2
@@ -146,6 +156,7 @@ class Issue_ticket():
 
 
 class Reservation_System():
+    # Defining a class which represents all class to interact with the passenger to get his ticket
     print("\n ::::::::::::::::::::::::::Welcome to STUDENT AIRLINES::::::::::::::::::::::::::")
     loc1 = input(str("Please Enter Departure Location: "))
     loc2 = input(str("Please Enter Arrival Location: "))

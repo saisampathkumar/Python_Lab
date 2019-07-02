@@ -68,28 +68,34 @@ class Student(Person):
 
 class Library:
     b = []
+    # List to save the borrowed books
     r = []
+    # List to save the returned books
 
     def __init__(self, books):
         self.books = books
 
     def display_books(self):
+        # To display available books
         print(":::::::::::::::::::", Colorise.colour("magenta", "BOOK AVAILABLE"), ":::::::::::::::::::")
         for book in self.books:
             print(self.books.index(book) + 1, ".", book)
 
     def lend_Book(self, rBook):
+        # Defining the function to lend a book
         rBook = self.books[rBook - 1]
         print("Thank You for borrowing ", Colorise.colour("cyan", rBook))
         self.books.remove(rBook)
         self.b.append(rBook)
 
     def return_Book(self, rBook):
+        # Defining function to return a book
         self.books.append(rBook)
         print("Thanks for returning ", Colorise.colour("cyan", rBook))
         self.r.append(rBook)
 
     def get_Summary(self):
+        # Defining function to print the total summary of the student
         print("\nBooks which are take")
         for i in self.b:
             print(Colorise.colour("blue", i))
