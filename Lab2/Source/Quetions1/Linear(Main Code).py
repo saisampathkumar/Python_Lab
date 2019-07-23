@@ -11,7 +11,7 @@ from keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
 
 # saving the event in a certain location to project the graphs
-tbCallBack= keras.callbacks.TensorBoard(log_dir='./Graph1', histogram_freq=0,write_graph=True, write_images=True)
+tbCallBack= keras.callbacks.TensorBoard(log_dir='./Graph3', histogram_freq=0,write_graph=True, write_images=True)
 
 #Reading csv file
 df = pd.read_csv('Modified_Rent_Data.csv')
@@ -62,8 +62,8 @@ Lmodel.summary()
 
 # Defining different types of epochs and batch sizes
 # Fitting the models and saving the tensorboard events
-epochs = 20
-batch_size = 128
+epochs = 50
+batch_size = 256
 history = Lmodel.fit(x_train, y_train,batch_size=batch_size,epochs=epochs,shuffle=True,verbose=2,validation_data=(x_test, y_test),callbacks=[tbCallBack])
 
 train_score = Lmodel.evaluate(x_train, y_train, verbose=0)
@@ -74,28 +74,3 @@ print('Train Mean Absolute Error : ', round(train_score[1], 1),
       '\n Train Loss: ', round(train_score[0], 1))
 print('Val Mean Absolute Error : ', round(test_score[1], 1),
       '\n Val Loss: ', round(test_score[0], 1))
-
-
-epochs = 50
-batch_size = 128
-history = Lmodel.fit(x_train, y_train,batch_size=batch_size,epochs=epochs,shuffle=True,verbose=2,validation_data=(x_test, y_test),callbacks=[tbCallBack])
-
-train_score = Lmodel.evaluate(x_train, y_train, verbose=0)
-test_score = Lmodel.evaluate(x_test, y_test, verbose=0)
-
-print('Train Mean Absolute Error : ', round(train_score[1], 1),
-      '\n Train Loss: ', round(train_score[0], 1))
-print('Val Mean Absolute Error : ', round(test_score[1], 1),
-      '\n Val Loss: ', round(test_score[0], 1))
-
-epochs = 50
-batch_size = 256
-history = Lmodel.fit(x_train, y_train,batch_size=batch_size,epochs=epochs,shuffle=True,verbose=2,validation_data=(x_test, y_test),callbacks=[tbCallBack])
-
-train_score = Lmodel.evaluate(x_train, y_train, verbose=0)
-test_score = Lmodel.evaluate(x_test, y_test, verbose=0)
-
-print('Train Mean Absolute Error : ', round(train_score[1], 1),
-      '\n Train Loss: ', round(train_score[0], 1))
-print('Val Mean Absolute Error : ', round(test_score[1], 1),
-      '\n Test Loss: ', round(test_score[0], 1))

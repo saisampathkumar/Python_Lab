@@ -10,7 +10,7 @@ from keras.layers import Dense
 from sklearn.model_selection import train_test_split
 
 # saving the event in a certain location to project the graphs
-tbCallBack= keras.callbacks.TensorBoard(log_dir='./Graph2', histogram_freq=0,write_graph=True, write_images=True)
+tbCallBack= keras.callbacks.TensorBoard(log_dir='./Graph4', histogram_freq=0,write_graph=True, write_images=True)
 
 # Reading csv file
 df = pd.read_csv('Modified_Rent_Data.csv')
@@ -50,8 +50,8 @@ print('Test samples: ', x_test.shape[0],'\n')
 # Creating a Logistic model
 Lmodel = Sequential()
 # provided sigmoid function as an activation function for logistic regression
-Lmodel.add(Dense(100, activation='sigmoid', input_shape=(x_train.shape[1],)))
-Lmodel.add(Dense(50, activation="sigmoid"))
+Lmodel.add(Dense(100, activation='tanh', input_shape=(x_train.shape[1],)))
+Lmodel.add(Dense(50, activation="tanh"))
 Lmodel.add(Dense(1))
 # We use binary cross entropy loss and rmsprop as optimizer for the logistic regression
 Lmodel.compile(loss="binary_crossentropy", optimizer='rmsprop', metrics=[metrics.mae])

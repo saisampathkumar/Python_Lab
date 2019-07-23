@@ -49,7 +49,7 @@ model.add(Dropout(0.2))
 
 model.add(Dense(num_classes, activation='softmax'))
 # Compile model
-epochs = 2
+epochs = 5
 lrate = 0.01
 decay = lrate/epochs
 sgd = SGD(lr=lrate, momentum=0.9, decay=decay, nesterov=False)
